@@ -1,30 +1,72 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-type Slot = { zh: string; en: string; room?: string } | null;
-type ClassRow = { break?: false; time: [string, string]; cells: Slot[] };
+const days = ["星期一", "星期二", "星期三", "星期四", "星期五"];
+type Slot = { zh: string; room: string } | null;
+type ClassRow = { break?: false; period: string; time: [string, string]; cells: Slot[] };
 type BreakRow = { break: true; label: string };
+
+const calc = { zh: "微積分(一)", room: "電機大樓 214 室" };
+const mcuMon = { zh: "微處理器應用", room: "電機大樓 200 室" };
+const mcuThu = { zh: "微處理器應用", room: "電機大樓 204 室" };
+const lab = { zh: "電工實驗", room: "電機大樓 210 室" };
+const emcMon = { zh: "電磁相容", room: "電機大樓 209 室" };
+const emcTue = { zh: "電磁相容", room: "電機大樓 201 室" };
+
 const rows: Array<ClassRow | BreakRow> = [
-  { time: ["08:10", "09:00"], cells: [null, { zh: "微積分(二)", en: "Calculus II", room: "A3-214" }, null, { zh: "微積分(二)", en: "Calculus II", room: "A3-214" }, null] },
-  { time: ["09:10", "10:00"], cells: [null, { zh: "微積分(二)", en: "Calculus II" }, { zh: "電磁學(一)", en: "Electromagnetics I", room: "A3-102" }, null, null] },
-  { time: ["10:10", "11:00"], cells: [null, null, { zh: "電磁學(一)", en: "Electromagnetics I" }, null, null] },
-  { time: ["11:10", "12:00"], cells: [null, null, { zh: "電磁學(一)", en: "Electromagnetics I" }, null, null] },
+  { period: "第一節", time: ["08:10", "09:00"], cells: [calc, null, null, null, calc] },
+  { period: "第二節", time: ["09:10", "10:00"], cells: [calc, null, lab, null, null] },
+  { period: "第三節", time: ["10:10", "11:00"], cells: [mcuMon, emcTue, lab, mcuThu, null] },
+  { period: "第四節", time: ["11:10", "12:00"], cells: [mcuMon, emcTue, lab, mcuThu, null] },
   { break: true, label: "12:10 – 13:00" },
-  { time: ["13:10", "14:00"], cells: [null, null, null, null, null] },
-  { time: ["14:10", "15:00"], cells: [{ zh: "電子電路實驗", en: "Electronic Circuits Lab", room: "A3-210" }, null, null, null, null] },
-  { time: ["15:10", "16:00"], cells: [{ zh: "電子電路實驗", en: "Electronic Circuits Lab" }, null, null, null, null] },
-  { time: ["16:10", "17:00"], cells: [{ zh: "電子電路實驗", en: "Electronic Circuits Lab" }, null, null, null, null] },
+  { period: "第五節", time: ["13:10", "14:00"], cells: [null, null, null, null, null] },
+  { period: "第六節", time: ["14:10", "15:00"], cells: [emcMon, null, null, null, null] },
+];
+
+const courses = [
+  {
+    name: "微積分(一)",
+    items: [
+      "星期一　第一節　電機大樓 214 室",
+      "星期一　第二節　電機大樓 214 室",
+      "星期五　第一節　電機大樓 214 室",
+    ],
+  },
+  {
+    name: "微處理器應用",
+    items: [
+      "星期一　第三節　電機大樓 200 室",
+      "星期一　第四節　電機大樓 200 室",
+      "星期四　第三節　電機大樓 204 室",
+      "星期四　第四節　電機大樓 204 室",
+    ],
+  },
+  {
+    name: "電工實驗",
+    items: [
+      "星期三　第二節　電機大樓 210 室",
+      "星期三　第三節　電機大樓 210 室",
+      "星期三　第四節　電機大樓 210 室",
+    ],
+  },
+  {
+    name: "電磁相容",
+    items: [
+      "星期一　第六節　電機大樓 209 室",
+      "星期二　第三節　電機大樓 201 室",
+      "星期二　第四節　電機大樓 201 室",
+    ],
+  },
 ];
 ---
 <BaseLayout title="AIoTCA LAB - Class-Schedule">
   <div class="schedule" id="content">
-    <h1><span style="color: var(--accent)">Prof. Dr. Wei Chien</span> Class Schedule</h1>
+    <h1><span style="color: var(--accent)">Prof. Dr. Wei Chien</span> 老師課表</h1>
     <p class="caption">Academic Timetable</p>
     <table>
       <thead>
         <tr>
-          <th>Time</th>
+          <th>節次</th>
           {days.map((d) => <th>{d}</th>)}
         </tr>
       </thead>
@@ -32,18 +74,21 @@ const rows: Array<ClassRow | BreakRow> = [
         {rows.map((row) =>
           row.break ? (
             <tr>
-              <td class="time">Break</td>
+              <td class="time">午休</td>
               <td class="break" colspan="5">{row.label}</td>
             </tr>
           ) : (
             <tr>
-              <td class="time">{row.time[0]}<br />{row.time[1]}</td>
+              <td class="time">
+                {row.period}<br />
+                {row.time[0]}–{row.time[1]}
+              </td>
               {row.cells.map((cell) => (
                 <td>
                   {cell && (
                     <div class="slot">
                       <b>{cell.zh}</b>
-                      {cell.en}{cell.room && <><br />{cell.room}</>}
+                      {cell.room}
                     </div>
                   )}
                 </td>
@@ -53,5 +98,16 @@ const rows: Array<ClassRow | BreakRow> = [
         )}
       </tbody>
     </table>
+
+    <div class="course-list">
+      {courses.map((course) => (
+        <section>
+          <h2>{course.name}</h2>
+          <ul>
+            {course.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+      ))}
+    </div>
   </div>
 </BaseLayout>

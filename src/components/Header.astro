@@ -1,6 +1,6 @@
 ---
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-const membersOpen = path.startsWith("/members");
+const membersActive = path.startsWith("/members");
 const items = [
   { href: "/", label: "Home" },
   { href: "/patents/", label: "Patents" },
@@ -31,8 +31,8 @@ const memberLinks = [
   </a>
   <nav class="nav" aria-label="Primary">
     <a class={path === "/" ? "is-active" : ""} href="/">Home</a>
-    <div class:list={["nav-drop", membersOpen && "is-open"]} data-drop>
-      <button type="button" aria-expanded={membersOpen ? "true" : "false"}>Members ▾</button>
+    <div class="nav-drop" data-drop>
+      <button class={membersActive ? "is-active" : ""} type="button" aria-expanded="false">Members ▾</button>
       <div class="nav-menu">
         {memberLinks.map((item) => (
           <a class:list={[item.sub && "sub", path === item.href.replace(/\/$/, "") && "is-active"]} href={item.href}>{item.label}</a>
