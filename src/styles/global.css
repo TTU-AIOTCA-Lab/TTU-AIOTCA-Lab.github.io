@@ -369,11 +369,21 @@ img { max-width: 100%; display: block; }
   line-height: 1.7;
 }
 .ttu {
-  text-align: right;
-  font-family: "Times New Roman", serif;
+  flex: 0 0 auto;
 }
-.ttu .zh { font-size: 28px; letter-spacing: 0.12em; }
-.ttu .en { letter-spacing: 0.18em; font-size: 12px; }
+.ttu img {
+  height: 88px;
+  width: auto;
+  max-width: min(420px, 100%);
+  display: block;
+  object-fit: contain;
+}
+.contact-info a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+.contact-info a:hover { text-decoration: underline; }
+.prose a { color: #1a73e8; }
 
 @media (max-width: 900px) {
   .site-header { flex-wrap: wrap; }
