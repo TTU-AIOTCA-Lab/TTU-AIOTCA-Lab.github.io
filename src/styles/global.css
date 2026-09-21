@@ -193,7 +193,7 @@ img { max-width: 100%; display: block; }
 }
 
 .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
-.prose { padding: 48px 0 24px; }
+.prose { padding: 48px 0 64px; }
 .prose h2, .prose h3 {
   color: var(--accent);
   font-weight: 400;
@@ -320,14 +320,6 @@ img { max-width: 100%; display: block; }
   from { transform: translateX(0); }
   to { transform: translateX(-100%); }
 }
-
-.calendar {
-  width: min(920px, calc(100% - 32px));
-  margin: 0 auto 48px;
-  min-height: 640px;
-  border: 1px solid #eee;
-}
-.calendar iframe { width: 100%; height: 640px; border: 0; }
 
 .schedule {
   width: min(1100px, calc(100% - 24px));
