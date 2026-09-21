@@ -1,72 +1,72 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const days = ["星期一", "星期二", "星期三", "星期四", "星期五"];
-type Slot = { zh: string; room: string } | null;
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+type Slot = { name: string; room: string } | null;
 type ClassRow = { break?: false; period: string; time: [string, string]; cells: Slot[] };
 type BreakRow = { break: true; label: string };
 
-const calc = { zh: "微積分(一)", room: "電機大樓 214 室" };
-const mcuMon = { zh: "微處理器應用", room: "電機大樓 200 室" };
-const mcuThu = { zh: "微處理器應用", room: "電機大樓 204 室" };
-const lab = { zh: "電工實驗", room: "電機大樓 210 室" };
-const emcMon = { zh: "電磁相容", room: "電機大樓 209 室" };
-const emcTue = { zh: "電磁相容", room: "電機大樓 201 室" };
+const calc = { name: "Calculus (I)", room: "EE Building, Room 214" };
+const mcuMon = { name: "Microprocessor Applications", room: "EE Building, Room 200" };
+const mcuThu = { name: "Microprocessor Applications", room: "EE Building, Room 204" };
+const lab = { name: "Electrical Engineering Lab", room: "EE Building, Room 210" };
+const emcMon = { name: "Electromagnetic Compatibility", room: "EE Building, Room 209" };
+const emcTue = { name: "Electromagnetic Compatibility", room: "EE Building, Room 201" };
 
 const rows: Array<ClassRow | BreakRow> = [
-  { period: "第一節", time: ["08:10", "09:00"], cells: [calc, null, null, null, calc] },
-  { period: "第二節", time: ["09:10", "10:00"], cells: [calc, null, lab, null, null] },
-  { period: "第三節", time: ["10:10", "11:00"], cells: [mcuMon, emcTue, lab, mcuThu, null] },
-  { period: "第四節", time: ["11:10", "12:00"], cells: [mcuMon, emcTue, lab, mcuThu, null] },
+  { period: "Period 1", time: ["08:10", "09:00"], cells: [calc, null, null, null, calc] },
+  { period: "Period 2", time: ["09:10", "10:00"], cells: [calc, null, lab, null, null] },
+  { period: "Period 3", time: ["10:10", "11:00"], cells: [mcuMon, emcTue, lab, mcuThu, null] },
+  { period: "Period 4", time: ["11:10", "12:00"], cells: [mcuMon, emcTue, lab, mcuThu, null] },
   { break: true, label: "12:10 – 13:00" },
-  { period: "第五節", time: ["13:10", "14:00"], cells: [null, null, null, null, null] },
-  { period: "第六節", time: ["14:10", "15:00"], cells: [emcMon, null, null, null, null] },
+  { period: "Period 5", time: ["13:10", "14:00"], cells: [null, null, null, null, null] },
+  { period: "Period 6", time: ["14:10", "15:00"], cells: [emcMon, null, null, null, null] },
 ];
 
 const courses = [
   {
-    name: "微積分(一)",
+    name: "Calculus (I)",
     items: [
-      "星期一　第一節　電機大樓 214 室",
-      "星期一　第二節　電機大樓 214 室",
-      "星期五　第一節　電機大樓 214 室",
+      "Monday, Period 1, EE Building, Room 214",
+      "Monday, Period 2, EE Building, Room 214",
+      "Friday, Period 1, EE Building, Room 214",
     ],
   },
   {
-    name: "微處理器應用",
+    name: "Microprocessor Applications",
     items: [
-      "星期一　第三節　電機大樓 200 室",
-      "星期一　第四節　電機大樓 200 室",
-      "星期四　第三節　電機大樓 204 室",
-      "星期四　第四節　電機大樓 204 室",
+      "Monday, Period 3, EE Building, Room 200",
+      "Monday, Period 4, EE Building, Room 200",
+      "Thursday, Period 3, EE Building, Room 204",
+      "Thursday, Period 4, EE Building, Room 204",
     ],
   },
   {
-    name: "電工實驗",
+    name: "Electrical Engineering Lab",
     items: [
-      "星期三　第二節　電機大樓 210 室",
-      "星期三　第三節　電機大樓 210 室",
-      "星期三　第四節　電機大樓 210 室",
+      "Wednesday, Period 2, EE Building, Room 210",
+      "Wednesday, Period 3, EE Building, Room 210",
+      "Wednesday, Period 4, EE Building, Room 210",
     ],
   },
   {
-    name: "電磁相容",
+    name: "Electromagnetic Compatibility",
     items: [
-      "星期一　第六節　電機大樓 209 室",
-      "星期二　第三節　電機大樓 201 室",
-      "星期二　第四節　電機大樓 201 室",
+      "Monday, Period 6, EE Building, Room 209",
+      "Tuesday, Period 3, EE Building, Room 201",
+      "Tuesday, Period 4, EE Building, Room 201",
     ],
   },
 ];
 ---
 <BaseLayout title="AIoTCA LAB - Class-Schedule">
   <div class="schedule" id="content">
-    <h1><span style="color: var(--accent)">Prof. Dr. Wei Chien</span> 老師課表</h1>
+    <h1><span style="color: var(--accent)">Prof. Dr. Wei Chien</span> Teaching Timetable</h1>
     <p class="caption">Academic Timetable</p>
     <table>
       <thead>
         <tr>
-          <th>節次</th>
+          <th>Period</th>
           {days.map((d) => <th>{d}</th>)}
         </tr>
       </thead>
@@ -74,7 +74,7 @@ const courses = [
         {rows.map((row) =>
           row.break ? (
             <tr>
-              <td class="time">午休</td>
+              <td class="time">Lunch</td>
               <td class="break" colspan="5">{row.label}</td>
             </tr>
           ) : (
@@ -87,7 +87,7 @@ const courses = [
                 <td>
                   {cell && (
                     <div class="slot">
-                      <b>{cell.zh}</b>
+                      <b>{cell.name}</b>
                       {cell.room}
                     </div>
                   )}

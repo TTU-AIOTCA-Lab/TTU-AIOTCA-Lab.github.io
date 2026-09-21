@@ -297,8 +297,7 @@ img { max-width: 100%; display: block; }
 }
 .member-card { width: 140px; text-align: center; }
 .member-card img { width: 120px; height: 150px; object-fit: cover; margin: 0 auto 8px; background: #eee; }
-.member-card .zh { font-size: 14px; }
-.member-card .en { font-size: 13px; color: #666; }
+.member-card .en { font-size: 14px; color: #333; }
 
 .marquee {
   overflow: hidden;

@@ -5,25 +5,25 @@ import SectionBanner from "../../components/SectionBanner.astro";
 import MemberGrid from "../../components/MemberGrid.astro";
 
 const cohort2023 = [
-  { name: "晏 禓", en: "Yang Yen", photo: "/images/undergrad/yang-yen.png" },
-  { name: "王柏翔", en: "Po-Xiang Wang", photo: "/images/undergrad/po-xiang-wang.png" },
-  { name: "黃柏翔", en: "Po-Xiang Huang", photo: "/images/undergrad/po-xiang-huang.png" },
-  { name: "許顥薰", en: "Hao-Hsun Hsu", photo: "/images/undergrad/hao-hsun-hsu.png" },
-  { name: "張宇杰", en: "Yu-Jie Zhang", photo: "/images/undergrad/yu-jie-zhang.png" },
+  { name: "Yang Yen", en: "Yang Yen", photo: "/images/undergrad/yang-yen.png" },
+  { name: "Po-Xiang Wang", en: "Po-Xiang Wang", photo: "/images/undergrad/po-xiang-wang.png" },
+  { name: "Po-Xiang Huang", en: "Po-Xiang Huang", photo: "/images/undergrad/po-xiang-huang.png" },
+  { name: "Hao-Hsun Hsu", en: "Hao-Hsun Hsu", photo: "/images/undergrad/hao-hsun-hsu.png" },
+  { name: "Yu-Jie Zhang", en: "Yu-Jie Zhang", photo: "/images/undergrad/yu-jie-zhang.png" },
 ];
 const cohort2021 = [
-  { name: "張家康", en: "N/A", photo: "/images/undergrad/placeholder.svg" },
-  { name: "廖昱睿", en: "N/A", photo: "/images/undergrad/placeholder.svg" },
-  { name: "陳品元", en: "Pin-Yuan Chen", photo: "/images/undergrad/placeholder.svg" },
+  { name: "Chia-Kang Chang", en: "Chia-Kang Chang", photo: "/images/undergrad/placeholder.svg" },
+  { name: "Yu-Rui Liao", en: "Yu-Rui Liao", photo: "/images/undergrad/placeholder.svg" },
+  { name: "Pin-Yuan Chen", en: "Pin-Yuan Chen", photo: "/images/undergrad/placeholder.svg" },
 ];
 ---
 <BaseLayout title="AIoTCA LAB - Undergraduate Students">
   <Hero title="UNDERGRADUATE STUDENTS" image="/images/hero-advisor-bg.jpg" />
   <div class="marquee" id="content">
-    <div class="marquee-track">Chào mừng những người cùng chí hướng gia nhập!  |  🔥 Kami sedang merekrut ahli kelab! Sertailah kami sekarang!  |  </div>
+    <div class="marquee-track">Welcome like-minded students to join us!  |  We are recruiting lab members. Join us now!  |  </div>
   </div>
-  <SectionBanner title="2023 FULL" note="[主題：智慧邊緣視覺下的自主無人機]" />
+  <SectionBanner title="2023 FULL" note="[Theme: Autonomous UAV with Intelligent Edge Vision]" />
   <MemberGrid members={cohort2023} />
-  <SectionBanner title="2021 FULL" note="[主題：具CS-AIoT魚類養殖系統]" />
+  <SectionBanner title="2021 FULL" note="[Theme: CS-AIoT Fish Farming System]" />
   <MemberGrid members={cohort2021} />
 </BaseLayout>

@@ -13,7 +13,6 @@ const { members } = Astro.props;
   {members.map((m) => (
     <article class="member-card">
       <img src={m.photo} alt={m.en} />
-      <div class="zh">{m.name}</div>
       <div class="en">{m.en}</div>
     </article>
   ))}
