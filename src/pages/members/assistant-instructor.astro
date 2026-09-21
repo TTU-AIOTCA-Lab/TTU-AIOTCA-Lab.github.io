@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import Profile from "../../components/Profile.astro";
+import SectionBanner from "../../components/SectionBanner.astro";
+import papers from "../../data/assistant-papers.json";
+
+const experience = [
+  "Collaborating Lecturer, Innovation and Incubation Center, National Taipei University of Technology, Taiwan May 2026 ~ Present",
+  "Lect., Dept. of Electronic Engineering (Primary) / Electrical Engineering (Joint), Lunghwa University of Science and Technology, Taiwan Feb. 2026 ~ Present",
+  "Teacher, New Taipei Municipal SanMin High School, Taiwan Sept. 2025 ~ Present",
+  "Teacher, New Taipei Municipal Bi-hua Junior High School Sept. 2025 ~ Present",
+  "Collaborating Teacher, Dept. of Electrical Engineering, Taipei Municipal Songshan High School of Agriculture and Industry, Taiwan Sept. 2024 ~ Present",
+  "Asst. Advisor, Dept. of Computer Information and Network Engineering, Lunghwa University of Science and Technology, Taiwan Sept. 2024 ~ Present",
+  "Collaborating Teacher, Dept. of Electrical Engineering, New Taipei Municipal Tamsui Vocational High School, Taiwan Aug. 2020 ~ Present",
+];
+const services = [
+  "Asst. Reviewer, IEEE Transactions on Network and Service Management (2026)",
+  "Reviewer, IEEE International Conference on Multimedia and Expo (ICME 2026)",
+  "Program Committee Member, IEEE International Conference on Computation, Big-Data and Engineering (ICCBE), 2025 – Present",
+];
+---
+<BaseLayout title="AIoTCA LAB - Asst. Instructor">
+  <Hero title="ASSISTANT INSTRUCTOR" image="/images/hero-asst-bg.png" />
+  <Profile
+    photo="/images/photo-asst.jpg"
+    name="張育丞 LECT. YU-CHENG CHANG"
+    fields={[
+      { label: "Email", html: '<a href="mailto:ycchang@gm.lhu.edu.tw">ycchang@gm.lhu.edu.tw</a> (Visits by appointment only)' },
+      { label: "Website", html: '<a href="https://www.yucheng208.net" target="_blank" rel="noreferrer">https://www.yucheng208.net</a>' },
+      { label: "Office", text: "Room 700D, 7F, Electrical Engineering Building" },
+      { label: "Opening Hours", text: "By appointment only" },
+      { label: "Specialty", text: "Artificial Intelligence; Large Language Models; Cybersecurity" },
+    ]}
+  />
+  <SectionBanner title="Education" />
+  <div class="numbered">
+    <p><strong>Ph.D in Computer Science, National Tsing Hua University, Taiwan Sept. 2026 ~ Present</strong></p>
+    <p><strong>M.S. in Computer Science and Information Engineering, National Taipei University of Technology, Taiwan Sept. 2024 ~ Jan. 2026</strong></p>
+    <p><strong>B.S. in Computer Information and Network Engineering, Lunghwa University of Science and Technology, Taiwan Sept. 2020 ~ Jun. 2024</strong></p>
+  </div>
+  <SectionBanner title="Experience" />
+  <div class="numbered"><ol>{experience.map((item) => <li>{item}</li>)}</ol></div>
+  <SectionBanner title="Academia Services" />
+  <div class="numbered"><ol>{services.map((item) => <li>{item}</li>)}</ol></div>
+  <SectionBanner title="Projects" />
+  <div class="numbered"><ol><li>TBA</li></ol></div>
+  <SectionBanner title="Papers" />
+  <div class="numbered"><ol>{papers.map((item) => <li>{item}</li>)}</ol></div>
+</BaseLayout>

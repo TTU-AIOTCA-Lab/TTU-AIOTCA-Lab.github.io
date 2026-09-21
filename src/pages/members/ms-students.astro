@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import SectionBanner from "../../components/SectionBanner.astro";
+import MemberGrid from "../../components/MemberGrid.astro";
+---
+<BaseLayout title="AIoTCA LAB - M.S. Students">
+  <Hero title="MASTER STUDENTS" image="/images/hero-advisor-bg.jpg" />
+  <div class="marquee" id="content">
+    <div class="marquee-track">Chào mừng những người cùng chí hướng gia nhập!  |  🔥 Kami sedang merekrut ahli kelab! Sertailah kami sekarang!  |  </div>
+  </div>
+  <SectionBanner title="2025 FULL" />
+  <MemberGrid members={[{ name: "林新力", en: "Xin-Li Lin", photo: "/images/photo-xinli-lin.png" }]} />
+</BaseLayout>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import Profile from "../../components/Profile.astro";
+import SectionBanner from "../../components/SectionBanner.astro";
+---
+<BaseLayout title="AIoTCA LAB - Researcher (Y.C.Lung)">
+  <Hero title="RESEARCHER" image="/images/hero-asst-bg.png" />
+  <Profile
+    photo="/images/photo-yclung.png"
+    name="龍禹丞 MR. YU-CHENG LUNG"
+    fields={[
+      { label: "Website", html: '<a href="https://www.roy.emo-lab.org" target="_blank" rel="noreferrer">https://www.roy.emo-lab.org</a>' },
+      { label: "Office", text: "Online Work" },
+      { label: "Specialty", text: "Large Language Models (LLMs), Retrieval-Augmented Generation (RAG); Network Engineer" },
+    ]}
+  />
+  <SectionBanner title="Education" />
+  <div class="numbered">
+    <p><strong>M.S. in Artificial Intelligence Technology, National Taipei University of Technology, Taiwan Sept. 2026 – Jun. 2028 (Expected)</strong></p>
+    <p><strong>B.S. in Computer Information and Network Engineering, Lunghwa University of Science and Technology, Taiwan Sept. 2020 – Jun. 2026</strong></p>
+  </div>
+  <SectionBanner title="Experience" />
+  <div class="numbered">
+    <ol>
+      <li>Collaborating Teacher, Department of Electrical Engineering, Taipei Municipal Songshan High School of Agriculture and Industry, Taiwan Sept. 2025 – Present</li>
+      <li>Researcher, Dept. of Electrical Engineering, Lunghwa University of Science and Technology, Taiwan Sept. 2024 – Present</li>
+      <li>Teaching Assistant, Dept. of Computer Information and Network Engineering, Lunghwa University of Science and Technology, Taiwan Sept. 2024 – Present</li>
+      <li>Network Manager (IT), Dept. of Computer Information and Network Engineering, Lunghwa University of Science and Technology, Taiwan Sept. 2023 – Feb. 2024</li>
+      <li>Collaborating Teacher, Dept. of Electrical Engineering, New Taipei Municipal Tamsui Vocational High School, Taiwan Aug. 2020 – Present</li>
+    </ol>
+  </div>
+  <SectionBanner title="Projects" />
+  <div class="numbered"><ol><li>TBA</li></ol></div>
+</BaseLayout>

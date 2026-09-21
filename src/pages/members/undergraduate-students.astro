@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import SectionBanner from "../../components/SectionBanner.astro";
+import MemberGrid from "../../components/MemberGrid.astro";
+
+const cohort2023 = [
+  { name: "晏 禓", en: "Yang Yen", photo: "/images/undergrad/yang-yen.png" },
+  { name: "王柏翔", en: "Po-Xiang Wang", photo: "/images/undergrad/po-xiang-wang.png" },
+  { name: "黃柏翔", en: "Po-Xiang Huang", photo: "/images/undergrad/po-xiang-huang.png" },
+  { name: "許顥薰", en: "Hao-Hsun Hsu", photo: "/images/undergrad/hao-hsun-hsu.png" },
+  { name: "張宇杰", en: "Yu-Jie Zhang", photo: "/images/undergrad/yu-jie-zhang.png" },
+];
+const cohort2021 = [
+  { name: "張家康", en: "N/A", photo: "/images/undergrad/placeholder.svg" },
+  { name: "廖昱睿", en: "N/A", photo: "/images/undergrad/placeholder.svg" },
+  { name: "陳品元", en: "Pin-Yuan Chen", photo: "/images/undergrad/placeholder.svg" },
+];
+---
+<BaseLayout title="AIoTCA LAB - Undergraduate Students">
+  <Hero title="UNDERGRADUATE STUDENTS" image="/images/hero-advisor-bg.jpg" />
+  <div class="marquee" id="content">
+    <div class="marquee-track">Chào mừng những người cùng chí hướng gia nhập!  |  🔥 Kami sedang merekrut ahli kelab! Sertailah kami sekarang!  |  </div>
+  </div>
+  <SectionBanner title="2023 FULL" note="[主題：智慧邊緣視覺下的自主無人機]" />
+  <MemberGrid members={cohort2023} />
+  <SectionBanner title="2021 FULL" note="[主題：具CS-AIoT魚類養殖系統]" />
+  <MemberGrid members={cohort2021} />
+</BaseLayout>

@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+type Slot = { zh: string; en: string; room?: string } | null;
+type ClassRow = { break?: false; time: [string, string]; cells: Slot[] };
+type BreakRow = { break: true; label: string };
+const rows: Array<ClassRow | BreakRow> = [
+  { time: ["08:10", "09:00"], cells: [null, { zh: "微積分(二)", en: "Calculus II", room: "A3-214" }, null, { zh: "微積分(二)", en: "Calculus II", room: "A3-214" }, null] },
+  { time: ["09:10", "10:00"], cells: [null, { zh: "微積分(二)", en: "Calculus II" }, { zh: "電磁學(一)", en: "Electromagnetics I", room: "A3-102" }, null, null] },
+  { time: ["10:10", "11:00"], cells: [null, null, { zh: "電磁學(一)", en: "Electromagnetics I" }, null, null] },
+  { time: ["11:10", "12:00"], cells: [null, null, { zh: "電磁學(一)", en: "Electromagnetics I" }, null, null] },
+  { break: true, label: "12:10 – 13:00" },
+  { time: ["13:10", "14:00"], cells: [null, null, null, null, null] },
+  { time: ["14:10", "15:00"], cells: [{ zh: "電子電路實驗", en: "Electronic Circuits Lab", room: "A3-210" }, null, null, null, null] },
+  { time: ["15:10", "16:00"], cells: [{ zh: "電子電路實驗", en: "Electronic Circuits Lab" }, null, null, null, null] },
+  { time: ["16:10", "17:00"], cells: [{ zh: "電子電路實驗", en: "Electronic Circuits Lab" }, null, null, null, null] },
+];
+---
+<BaseLayout title="AIoTCA LAB - Class-Schedule">
+  <div class="schedule" id="content">
+    <h1><span style="color: var(--accent)">Prof. Dr. Wei Chien</span> Class Schedule</h1>
+    <p class="caption">Academic Timetable</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          {days.map((d) => <th>{d}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) =>
+          row.break ? (
+            <tr>
+              <td class="time">Break</td>
+              <td class="break" colspan="5">{row.label}</td>
+            </tr>
+          ) : (
+            <tr>
+              <td class="time">{row.time[0]}<br />{row.time[1]}</td>
+              {row.cells.map((cell) => (
+                <td>
+                  {cell && (
+                    <div class="slot">
+                      <b>{cell.zh}</b>
+                      {cell.en}{cell.room && <><br />{cell.room}</>}
+                    </div>
+                  )}
+                </td>
+              ))}
+            </tr>
+          )
+        )}
+      </tbody>
+    </table>
+  </div>
+</BaseLayout>

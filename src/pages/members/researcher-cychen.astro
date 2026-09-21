@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import Profile from "../../components/Profile.astro";
+import SectionBanner from "../../components/SectionBanner.astro";
+---
+<BaseLayout title="AIoTCA LAB - Researcher (C.Y.Chen)">
+  <Hero title="RESEARCHER" image="/images/hero-asst-bg.png" />
+  <Profile
+    photo="/images/photo-cychen.png"
+    name="陳嘉維 MR. CHIA-WEI CHEN"
+    fields={[
+      { label: "Office", text: "Off-site office" },
+      { label: "Specialty", text: "Large Language Models (LLMs), Retrieval-Augmented Generation (RAG); Computer Vision" },
+    ]}
+  />
+  <SectionBanner title="Education" />
+  <div class="numbered">
+    <p><strong>B.S. in Electronic Engineering, Lunghwa University of Science and Technology, Taiwan Sept. 2021 – Jun. 2027 (Expected)</strong></p>
+  </div>
+  <SectionBanner title="Experience" />
+  <div class="numbered"><ol><li>TBA</li></ol></div>
+  <SectionBanner title="Projects" />
+  <div class="numbered"><ol><li>TBA</li></ol></div>
+</BaseLayout>

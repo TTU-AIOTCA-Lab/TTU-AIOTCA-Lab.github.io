@@ -1,0 +1,20 @@
+---
+interface Props {
+  photo: string;
+  name: string;
+  fields: { label: string; html?: string; text?: string }[];
+}
+const { photo, name, fields } = Astro.props;
+---
+<section class="wrap profile" id="content">
+  <img src={photo} alt={name} />
+  <div>
+    <h2>{name}</h2>
+    {fields.map((field) => (
+      <p>
+        <strong>{field.label}:</strong>{" "}
+        {field.html ? <span set:html={field.html} /> : field.text}
+      </p>
+    ))}
+  </div>
+</section>

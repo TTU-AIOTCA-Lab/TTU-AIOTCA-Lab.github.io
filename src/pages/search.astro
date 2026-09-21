@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const q = Astro.url.searchParams.get("q") ?? "";
+---
+<BaseLayout title="Search | AIoTCA LAB">
+  <div class="wrap prose" id="content">
+    <h2>Search</h2>
+    <form action="/search/" method="get">
+      <input name="q" value={q} style="padding:8px 10px;width:min(420px,100%);font:inherit" />
+    </form>
+    {q && <p>No built-in full-text index yet. Use your browser’s find command, or email <a href="mailto:chienwei@gm.ttu.edu.tw">chienwei@gm.ttu.edu.tw</a>.</p>}
+  </div>
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  image: string;
+}
+const { title, subtitle, image } = Astro.props;
+---
+<section class="hero" style={`background-image: url('${image}')`}>
+  <div class="hero-inner">
+    <h1>{title}</h1>
+    <div class="rule"></div>
+    {subtitle && <p class="sub">{subtitle}</p>}
+  </div>
+  <a class="scroll-hint" href="#content" aria-label="Scroll down">▾</a>
+</section>

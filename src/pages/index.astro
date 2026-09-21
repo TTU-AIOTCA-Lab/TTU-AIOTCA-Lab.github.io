@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import RecruitmentAd from "../components/RecruitmentAd.astro";
+
+const partners = [
+  "National Tsing Hua University, Taiwan",
+  "National Taipei University of Education, Taiwan",
+  "National Taipei University of Technology, Taiwan",
+  "National Formosa University, Taiwan",
+  "National Yunlin University of Science and Technology, Taiwan",
+  "Tamkang University, Taiwan",
+  "Asia Eastern University of Science and Technology, Taiwan",
+  "Lunghwa University of Science and Technology, Taiwan",
+  "Hungkuo Delin University of Technology, Taiwan",
+  "Taipei Municipal Songshan High School of Agriculture and Industry, Taiwan",
+  "LinkWen Electronics Co., Ltd., Taiwan",
+  "Tunku Abdul Rahman University of Management and Technology, Malaysia",
+  "Ningde Normal University, China",
+  "Qian Wei New Energy Co., Ltd., China",
+];
+const calendarSrc =
+  "https://calendar.google.com/calendar/embed?src=a10e7c52261e3b788af594c074068176fe6cd619a01428376cddf46d8ac1e5d7%40group.calendar.google.com&ctz=Asia%2FTaipei&showTitle=0&showPrint=0&showTabs=0&showCalendars=1&showTz=0&showDate=0&showNav=0&mode=MONTH";
+---
+<BaseLayout title="AIoTCA LAB">
+  <Hero title="AIOTCA LAB" subtitle="智慧物聯網通訊應用實驗室" image="/images/hero-home.png" />
+  <RecruitmentAd />
+  <div class="wrap prose" id="content">
+    <h3>About AIoTCA Lab</h3>
+    <p>
+      AIoTCA LAB (Artificial Intelligence of Things and Communication Applications Laboratory)
+      is dedicated to integrating and applying Artificial Intelligence (AI), the Internet of Things (IoT),
+      and advanced communication technologies. Our mission is to bridge theoretical innovation with
+      practical implementation, cultivating professionals equipped with strong technical expertise and
+      real-world engineering capabilities.
+    </p>
+    <p>
+      The laboratory actively participates in national and international competitions and invention exhibitions,
+      fostering hands-on system development and interdisciplinary integration skills. Through research-driven
+      projects, students strengthen their abilities in system architecture design, algorithm development, and
+      engineering implementation.
+    </p>
+    <p>
+      We are deeply engaged in industry–academia collaboration programs, patent development, and major
+      scientific research projects. By aligning research with industrial demands, we enhance practical competence
+      and ensure that technological innovations possess real-world applicability and translational value.
+    </p>
+    <p>
+      Academically, the laboratory strongly encourages publications in international journals and at conferences.
+      We emphasize global academic engagement to broaden international perspectives, increase research visibility,
+      and create opportunities for international collaboration. We have active cross-institutional partnerships
+      with domestic and international universities, supporting joint research and resource sharing.
+    </p>
+    <p><strong>Research Areas Include (but are not limited to):</strong></p>
+    <ul>
+      <li>Artificial Intelligence and Deep Learning Applications</li>
+      <li>Intelligent IoT System Integration</li>
+      <li>Wireless Communications and Smart Sensing Technologies</li>
+      <li>Embedded Systems and Edge Computing</li>
+      <li>Smart Cities and Intelligent Living Applications</li>
+    </ul>
+    <p>
+      With AI, IoT, and communication technologies, AIoTCA LAB is committed to creating solutions that make
+      life smarter, more efficient, and more convenient.
+    </p>
+    <p>
+      Please note that the laboratory maintains a highly active schedule, including research projects,
+      competitions, collaborative programs, and academic activities. Prospective members are strongly advised
+      to carefully evaluate their time commitment, academic workload, and professional goals before initiating
+      discussions regarding joining the lab.
+    </p>
+    <p>We warmly welcome motivated, research-oriented students passionate about AI and intelligent IoT applications.</p>
+    <p>
+      For inquiries regarding membership, please contact us via email. If you do not receive a response within
+      one week, kindly resend your message, as high email volume may occasionally result in correspondence being
+      missed. We sincerely appreciate your understanding.
+    </p>
+    <hr class="divider" />
+    <h3>Partners [Update: 2026-05-01]</h3>
+    <ul>
+      {partners.map((p) => <li>{p}</li>)}
+    </ul>
+    <p style="color: var(--accent);">
+      [Notice] Our collaborations span diverse partners, including industry sectors, academic institutions
+      (such as individual departments or research laboratories), professional associations, and legal entities.
+      To ensure clarity and consistency in presentation, the following representation principles are applied:
+      1. When multiple departments within a single company are involved, the organization is represented by the
+      company name as a whole. 2. Similarly, when collaborations extend across multiple departments or laboratories
+      within an academic institution, the institution is represented by its official university or school name.
+      3. This approach makes partner classification easier while maintaining broad, deep collaboration and ensuring
+      an accurate, consistent representation across the platform.
+    </p>
+    <hr class="divider" />
+    <h3>Laboratory Calendar</h3>
+  </div>
+  <div class="calendar">
+    <iframe title="AIoTCA LAB Calendar" src={calendarSrc}></iframe>
+  </div>
+</BaseLayout>

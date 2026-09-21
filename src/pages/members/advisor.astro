@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import Profile from "../../components/Profile.astro";
+import SectionBanner from "../../components/SectionBanner.astro";
+import advisor from "../../data/advisor.json";
+
+const education = [
+  "Ph.D. in Electrical Engineering, Tamkang University, Taiwan Sept. 2001 – Jan. 2006",
+  "M.S. in Electrical Engineering, Tamkang University, Taiwan Sept. 1997 – Jun. 1999",
+  "B.S. in Electrical Engineering, Tatung University, Taiwan Sept. 1992 – Jun. 1997",
+];
+---
+<BaseLayout title="AIoTCA LAB - Advisor">
+  <Hero title="ADVISOR" image="/images/hero-advisor-bg.jpg" />
+  <Profile
+    photo="/images/photo-advisor.jpg"
+    name="錢 威 教授 PROF. WEI CHIEN"
+    fields={[
+      { label: "TEL", text: "+886-2-2182-2928 Ext. 6355" },
+      { label: "Mobile", text: "+886 952-365-717" },
+      { label: "Office", text: "Room 700D, 7F, Electrical Engineering Building" },
+      { label: "Specialty", text: "Microwave Engineering, Communication Systems, High-Tech Patent Applications" },
+      { label: "Opening Hours", text: "11:00–14:00 on Mondays of odd-numbered weeks each month" },
+    ]}
+  />
+  <SectionBanner title="Education" />
+  <div class="numbered">
+    {education.map((item) => <p><strong>{item}</strong></p>)}
+  </div>
+  <SectionBanner title="Experience" />
+  <div class="numbered"><ol>{advisor.experience.map((item) => <li>{item}</li>)}</ol></div>
+  <SectionBanner title="Academia Services" />
+  <div class="numbered"><ol>{advisor.academia.map((item) => <li>{item}</li>)}</ol></div>
+  <SectionBanner title="Journal Papers" />
+  <div class="numbered"><ol>{advisor.journals.map((item) => <li>{item}</li>)}</ol></div>
+  <SectionBanner title="Conference Papers" />
+  <div class="numbered"><ol>{advisor.conferences.map((item) => <li>{item}</li>)}</ol></div>
+  <SectionBanner title="Projects" />
+  <div class="numbered"><ol>{advisor.projects.map((item) => <li>{item}</li>)}</ol></div>
+  <SectionBanner title="Patents" />
+  <div class="numbered"><ol>{advisor.patents.map((item) => <li>{item}</li>)}</ol></div>
+  <SectionBanner title="Awards" />
+  <div class="numbered"><ol>{advisor.awards.map((item) => <li>{item}</li>)}</ol></div>
+</BaseLayout>

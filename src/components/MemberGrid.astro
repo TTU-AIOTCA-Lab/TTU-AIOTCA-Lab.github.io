@@ -1,0 +1,20 @@
+---
+interface Member {
+  name: string;
+  en: string;
+  photo: string;
+}
+interface Props {
+  members: Member[];
+}
+const { members } = Astro.props;
+---
+<div class="member-grid">
+  {members.map((m) => (
+    <article class="member-card">
+      <img src={m.photo} alt={m.en} />
+      <div class="zh">{m.name}</div>
+      <div class="en">{m.en}</div>
+    </article>
+  ))}
+</div>

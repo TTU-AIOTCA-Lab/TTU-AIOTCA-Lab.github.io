@@ -1,0 +1,66 @@
+---
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const membersOpen = path.startsWith("/members");
+const items = [
+  { href: "/", label: "Home" },
+  { href: "/patents/", label: "Patents" },
+  { href: "/publications/", label: "Publications" },
+  { href: "/projects/", label: "Projects" },
+  { href: "/awards/", label: "Awards" },
+  { href: "/partners/", label: "Partners" },
+];
+const memberLinks = [
+  { href: "/members/advisor/", label: "Advisor" },
+  { href: "/members/advisor/class-schedule/", label: "Class-Schedule", sub: true },
+  { href: "/members/assistant-instructor/", label: "Asst. Instructor" },
+  { href: "/members/researcher-yclung/", label: "Researcher (Y.C.Lung)" },
+  { href: "/members/researcher-cychen/", label: "Researcher (C.Y.Chen)" },
+  { href: "/members/ms-students/", label: "M.S. Students" },
+  { href: "/members/undergraduate-students/", label: "Undergraduate Students" },
+  { href: "/members/alumni/", label: "Alumni" },
+];
+---
+<div class="topbar">
+  <span>Visits by appointment only.</span>
+  <a class="contact-btn" href="mailto:chienwei@gm.ttu.edu.tw">Contact Us</a>
+</div>
+<header class="site-header">
+  <a class="brand" href="/">
+    <img src="/images/logo.png" alt="AIoTCA LAB" />
+    <span>AIoTCA LAB</span>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a class={path === "/" ? "is-active" : ""} href="/">Home</a>
+    <div class:list={["nav-drop", membersOpen && "is-open"]} data-drop>
+      <button type="button" aria-expanded={membersOpen ? "true" : "false"}>Members ▾</button>
+      <div class="nav-menu">
+        {memberLinks.map((item) => (
+          <a class:list={[item.sub && "sub", path === item.href.replace(/\/$/, "") && "is-active"]} href={item.href}>{item.label}</a>
+        ))}
+      </div>
+    </div>
+    {items.slice(1).map((item) => (
+      <a class={path === item.href.replace(/\/$/, "") ? "is-active" : ""} href={item.href}>{item.label}</a>
+    ))}
+    <button class="search-btn" type="button" data-search-toggle aria-label="Search">⌕</button>
+  </nav>
+</header>
+<div class="search-panel" data-search-panel>
+  <form action="/search/" method="get">
+    <input type="search" name="q" placeholder="Search this site" />
+  </form>
+</div>
+<script>
+  document.querySelectorAll("[data-drop]").forEach((el) => {
+    const btn = el.querySelector("button");
+    btn?.addEventListener("click", () => el.classList.toggle("is-open"));
+    document.addEventListener("click", (event) => {
+      if (!el.contains(event.target as Node)) el.classList.remove("is-open");
+    });
+  });
+  const panel = document.querySelector("[data-search-panel]");
+  document.querySelector("[data-search-toggle]")?.addEventListener("click", () => {
+    panel?.classList.toggle("open");
+    panel?.querySelector("input")?.focus();
+  });
+</script>
