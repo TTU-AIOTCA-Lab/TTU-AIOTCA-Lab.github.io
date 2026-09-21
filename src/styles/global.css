@@ -44,9 +44,42 @@ img { max-width: 100%; display: block; }
   border-radius: 4px;
   padding: 6px 14px;
   text-decoration: none;
+  font: inherit;
   font-size: 13px;
+  color: inherit;
+  cursor: pointer;
 }
 .contact-btn:hover { background: #fafafa; }
+.contact-dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 28px 32px 24px;
+  max-width: 420px;
+  width: calc(100% - 32px);
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0,0,0,.18);
+}
+.contact-dialog::backdrop { background: rgba(0,0,0,.45); }
+.contact-dialog h2 {
+  font-family: Oswald, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+.contact-dialog p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.contact-dialog a {
+  display: inline-block;
+  color: #1a73e8;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.contact-dialog form { margin: 0; }
 
 .site-header {
   background: #fff;
@@ -236,13 +269,16 @@ img { max-width: 100%; display: block; }
 }
 .recruit p { margin: 0 0 8px; opacity: .95; }
 .recruit ul { margin: 8px 0 0; padding-left: 18px; }
-.recruit a.cta {
+.recruit .cta {
   background: #fff;
   color: #1f1f1f;
   text-decoration: none;
   padding: 12px 18px;
+  font: inherit;
   font-weight: 700;
   white-space: nowrap;
+  border: 0;
+  cursor: pointer;
 }
 @media (max-width: 800px) {
   .recruit { grid-template-columns: 1fr; }

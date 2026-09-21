@@ -22,7 +22,7 @@ const memberLinks = [
 ---
 <div class="topbar">
   <span>Visits by appointment only.</span>
-  <a class="contact-btn" href="mailto:chienwei@gm.ttu.edu.tw">Contact Us</a>
+  <button class="contact-btn" type="button" data-contact-open>Contact Us</button>
 </div>
 <header class="site-header">
   <a class="brand" href="/">
@@ -50,6 +50,14 @@ const memberLinks = [
     <input type="search" name="q" placeholder="Search this site" />
   </form>
 </div>
+<dialog class="contact-dialog" data-contact-dialog aria-labelledby="contact-dialog-title">
+  <h2 id="contact-dialog-title">Contact</h2>
+  <p>Email</p>
+  <a href="mailto:chienwei@gm.ttu.edu.tw">chienwei@gm.ttu.edu.tw</a>
+  <form method="dialog">
+    <button type="submit" class="contact-btn">Close</button>
+  </form>
+</dialog>
 <script>
   document.querySelectorAll("[data-drop]").forEach((el) => {
     const btn = el.querySelector("button");
@@ -62,5 +70,15 @@ const memberLinks = [
   document.querySelector("[data-search-toggle]")?.addEventListener("click", () => {
     panel?.classList.toggle("open");
     panel?.querySelector("input")?.focus();
+  });
+  const contactDialog = document.querySelector("[data-contact-dialog]");
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement | null;
+    if (target?.closest("[data-contact-open]")) {
+      (contactDialog as HTMLDialogElement | null)?.showModal();
+    }
+  });
+  contactDialog?.addEventListener("click", (event) => {
+    if (event.target === contactDialog) (contactDialog as HTMLDialogElement).close();
   });
 </script>
